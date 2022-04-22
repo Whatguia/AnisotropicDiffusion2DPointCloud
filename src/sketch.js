@@ -1,7 +1,7 @@
 /*
 Smooth a point cloud approximating the points in a smart way.
 Anisotropic Diffusion for smoothing 
-Gradient descent (opposite) for approximating
+Gradient Ascent for approximating
 
 In order to remove noise, remove the points that are isolated.
 
@@ -156,7 +156,7 @@ function approximatePoints(grid, stepSize, iterations) {
         (S - N) / (2 * dy)
       ];
 
-      // Opposite gradient descent
+      // Gradient Ascent
       for(let k = 0; k < currentSquare.pointIndices.length; k ++) {
 
         let currentPoint = grid.pointCloud[currentSquare.pointIndices[k]];
