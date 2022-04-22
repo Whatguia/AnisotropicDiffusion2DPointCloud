@@ -16,7 +16,7 @@ be the diffusion function. Then anisotropic diffusion is defined as:
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/c.png)
 
-Where **Δ** denotes the Laplacian, **∇** denotes the gradient, **∇ •** is the divergence and **c(x,y,t)** is the diffusion coefficient which controls the rate of diffusion
+Where **Δ** denotes the Laplacian, **∇** denotes the gradient, **∇ •** is the divergence and **c(x,y,t)** is the diffusion coefficient which controls the rate of diffusion.
 
 ## Approximation using Gradient Descent
 
@@ -24,9 +24,11 @@ As gradient is a vector defined as:
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/gradient.png)
 
-Let *v(x,y)* be a point of the point cloud
+Let *v(x,y)* be a point of the point cloud.
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/gradientDescent.png)
+
+Being **ɣ** the step-size.
 
 The gradient vector is always pointing at a maximum. So moving *v* in that direction should aproximate *v* to a maximum, moving in the opposite direction aproximates to a minimum.
 
