@@ -159,23 +159,28 @@ function approximatePoints(grid, stepSize, iterations) {
       // Gradient Ascent
       for(let k = 0; k < currentSquare.pointIndices.length; k ++) {
 
+        // Apply gradient Ascent
         let currentPoint = grid.pointCloud[currentSquare.pointIndices[k]];
         currentPoint.x += stepSize * gradient[0];
         currentPoint.y += stepSize * gradient[1];
 
         // If the point is in a new square, update grid
-        for(let l = 0; l < grid.squares; l ++) {
-          let nextSquare = grid.squares[l];
-
-          if(currentPoint.x >= nextSquare.x && currentPoint.x <= nextSquare.x + grid.squareSize &&
+        let desiredX = Math.floor((currentPoint.x - 0) / grid.squareSize) - 1;
+        let desiredY = Math.floor((currentPoint.y - 0) / grid.squareSize) - 1;
+        
+        // Calculate the corresponding square of the new point coordinates
+        let pos = desiredX + desiredY * w;
+        if (pos < 0) pos = 0;
+        else if(pos >= grid.squares.length) pos = grid.squares.length - 1;
+        let nextSquare = grid.squares[pos];
+        
+        if(currentPoint.x >= nextSquare.x && currentPoint.x <= nextSquare.x + grid.squareSize &&
             currentPoint.y >= nextSquare.y && currentPoint.y <= nextSquare.y + grid.squareSize && 
             nextSquare != currentSquare) {
-
             // Move indices from squares
             nextSquare.pointIndices.push(currentSquare.pointIndices[k]);
             currentSquare.pointIndices.splice(k, 1);
           }
-        }
 
       }
     }
