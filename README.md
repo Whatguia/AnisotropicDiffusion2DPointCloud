@@ -33,9 +33,9 @@ As gradient is a vector defined as:
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/gradient.png)
 
-Let *v(x,y)* be a point of the point cloud. So the gradient descent is given by the following expresion:
+Let *v(x,y)* be a point of the point cloud. So the gradient ascent is given by the following expresion:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/gradientDescent.png)
+![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/gradientAscent.png)
 
 Being **ɣ** the step-size.
 
