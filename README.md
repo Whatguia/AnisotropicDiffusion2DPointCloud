@@ -44,7 +44,7 @@ Being **ɣ** the step-size.
 * Calculate a 2D Grid. The temperature of each square is nothing but the sum of the temperatures radiated by the points inside of it (As the temperature of a point is 1 by default, the temperature of the square is the amount of points in the square).
 * Apply Anisotropic Diffusion equation to the Grid in order to smooth.
 * Apply Gradient Ascent  in order to approximate the points to those regions which have more amount of points.
-> We are using Gradient Ascent!
+
 ## Demo
 
 Random generated point cloud
