@@ -47,12 +47,14 @@ Being **ɣ** the step-size.
 
 ## Citations
 
+```bibtext
 @software{
   author = {Alberto Morcillo Sanz},
   title = {AnisotropicDiffusion2DPointCloud},
   url = {https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud},
   year = {2022}
 }
+```
 
 ## Demo
 
