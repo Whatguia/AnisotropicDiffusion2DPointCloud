@@ -45,17 +45,6 @@ Being **ɣ** the step-size.
 * Apply Anisotropic Diffusion equation to the Grid in order to smooth.
 * Apply Gradient Ascent  in order to approximate the points to those regions which have more amount of points.
 
-## Citations
-
-```bibtext
-@software{
-  author = {Alberto Morcillo Sanz},
-  title = {AnisotropicDiffusion2DPointCloud},
-  url = {https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud},
-  year = {2022}
-}
-```
-
 ## Demo
 
 Random generated point cloud
