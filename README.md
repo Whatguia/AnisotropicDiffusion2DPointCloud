@@ -9,56 +9,47 @@ The points tend to move to most populated regions of the point cloud, smothing i
 
 The diffusion equation is a parabolic partial differential equation. In physics, it describes the macroscopic behavior of many micro-particles in Brownian motion, resulting from the random movements and collisions of the particles (see Fick's laws of diffusion)
 
-Let  
+Let $\Omega \subset \mathbb{R}^{2}$ denote a subset of the plane and  $\phi(\cdot, t) : \Omega \rightarrow \mathbb{R}$ be the diffusion function. Then anisotropic diffusion is defined as:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/omega.png)  
+$$\frac{\partial \phi}{\partial t} = \nabla \cdot \left[ c(\left|| \nabla \phi \right||) \nabla \phi \right] = \nabla c \cdot \nabla \phi + c(\left|| \nabla \phi \right||) \Delta \phi$$
 
-denote a subset of the plane and  
+The gradient of $\phi$ is defined as
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/function.png)  
+$$\nabla \phi = \left( \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial y} \right)$$
 
-be the diffusion function. Then anisotropic diffusion is defined as:
+Where $\Delta \phi$ is the Laplacian of the function $\phi$
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/definition.png)
+$$\Delta \phi = \sum_{i=1}^{n}\frac{\partial^{2} \phi}{\partial x^{2}_{i}} = \frac{\partial^{2}\phi}{\partial x^{2}} + \frac{\partial^{2}\phi}{\partial y^{2}}$$
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/c.png)
+And the diffusion coefficient is given by
 
-Where Δ denotes the **Laplacian**, ∇ denotes the **gradient**, ∇ • is the **divergence** and c(x,y,t) is the **diffusion coefficient** which controls the rate of diffusion.
+$$c(x) = e^{-\left( \frac{x}{k} \right)^{2}}$$
+
+Where $\Delta$ denotes the Laplacian, $\nabla$ denotes the gradient, $\nabla \cdot$ is the divergence and $c(x)$ is the diffusion coefficient which controls the rate of diffusion
 
 ## Approximation using Gradient Ascent
 
 In mathematics gradient descent (also often called steepest descent) is a first-order iterative optimization algorithm for finding a local minimum of a differentiable function. The idea is to take repeated steps in the opposite direction of the gradient (or approximate gradient) of the function at the current point, because this is the direction of steepest descent. Conversely, stepping in the direction of the gradient will lead to a local maximum of that function; the procedure is then known as gradient ascent
 
-As gradient is a vector defined as:
+Let $v(x,y)$ be a point of the point cloud. So the gradient ascent is given by the following expresion:
 
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/gradient.png)
+$$v_{n+1} = v_{n} + \gamma \nabla \phi \left( v_{n} \right)$$
 
-Let *v(x,y)* be a point of the point cloud. So the gradient ascent is given by the following expresion:
-
-![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/gradientAscent.png)
-
-Being **ɣ** the step-size.
+Being $\gamma$ the step-size.
 
 ## Algorithm
-* Each point radiates temperature. All the points radiates the same temperature (1).
-* Calculate a 2D Grid. The temperature of each square is nothing but the sum of the temperatures radiated by the points inside of it (As the temperature of a point is 1 by default, the temperature of the square is the amount of points in the square).
-* Apply Anisotropic Diffusion equation to the Grid in order to smooth.
-* Apply Gradient Ascent  in order to approximate the points to those regions which have more amount of points.
-
-## Demo
-
-Random generated point cloud
+* Calculate a 2D Grid.
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/pointcloud.png)
 
-Grid and temperatures
+* Each point radiates temperature. All the points radiates the same temperature (1). The temperature of each square is nothing but the sum of the temperatures radiated by the points inside of it (As the temperature of a point is 1 by default, the temperature of the square is the amount of points in the square).
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/temperatureGrid.png)
 
-Temperature Anisotropic Diffusion
+* Apply Anisotropic Diffusion equation to the Grid in order to smooth.
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/diffusionGrid.png)
 
-Approximated points (smooth)
+* Apply Gradient Ascent  in order to approximate the points to those regions which have more amount of points
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/approximated.png)
