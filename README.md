@@ -38,7 +38,8 @@ $$v_{n+1} = v_{n} + \gamma \nabla \phi \left( v_{n} \right)$$
 Being $\gamma$ the step-size.
 
 ## Algorithm
-* Calculate a 2D Grid.
+
+* Calculate a 2D Grid which contains the points of the point cloud
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/pointcloud.png)
 
@@ -46,10 +47,18 @@ Being $\gamma$ the step-size.
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/temperatureGrid.png)
 
-* Apply Anisotropic Diffusion equation to the Grid in order to smooth.
+* Apply Anisotropic Diffusion equation to the Grid in order to smooth the temperatures of the squares (now the new temperature of each square doesn't match with the number of points in that square)
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/diffusionGrid.png)
 
-* Apply Gradient Ascent  in order to approximate the points to those regions which have more amount of points
+* Apply Gradient Ascent in order to approximate the points to those regions which have more amount of points: moving the points of a square to the positive direction of the gradient of the grid in that square (now the number of points of each square is closer to the new temperature of the square).
 
 ![alt text](https://github.com/MorcilloSanz/AnisotropicDiffusion2DPointCloud/blob/main/img/approximated.png)
+
+## 3D point clouds
+
+We can do the same process in 3D space, but using a **3D grid**, calculating the **temperature of each voxel**, applying the **Anisotropic Diffusion** but now:
+
+Let $\Omega \subset \mathbb{R}^{3}$ denote a subset of the plane and  $\phi(\cdot, t) : \Omega \rightarrow \mathbb{R}$ be the diffusion function
+
+And then approximating points using **Gradient Ascent**
